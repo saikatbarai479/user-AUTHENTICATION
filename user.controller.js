@@ -4,14 +4,7 @@ import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 const registerUser = async (req, res) => {
-  // get data
-  //validate
-  // check if user already exists
-  // create a user in database
-  //create a verification token
-  // save token in database
-  // send token as email to user
-  // send success status to user
+  
 
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
@@ -51,7 +44,7 @@ const registerUser = async (req, res) => {
     const transporter = nodemailer.createTransport({
       host: process.env.MAILTRAP_HOST,
       port: process.env.MAILTRAP_PORT,
-      secure: false, // true for port 465, false for other ports
+      secure: false, 
       auth: {
         user: process.env.MAILTRAP_USERNAME,
         pass: process.env.MAILTRAP_PASSWORD,
@@ -83,14 +76,7 @@ const registerUser = async (req, res) => {
 };
 
 const verifyUser = async (req, res) => {
-  //get token from url
-  //validate
-  // find user based on token
-  //if not
-  // set isVerified field to true
-  // remove verification token
-  // save
-  //return response
+  
 
   const { token } = req.params;
   console.log(token);
@@ -214,16 +200,12 @@ const logoutUser = async (req, res) => {
 };
 const forgotPassword = async (req, res) => {
   try {
-    //get email
-    // find user based on email
-    // reset token + reset expiry => Date.now() + 10 * 60 * 1000 => user.save()
-    // send mail => design url
+    
   } catch (error) {}
 };
 const resetPassword = async (req, res) => {
   try {
-    //collect token from params
-    // password from req.body
+    
     const { token } = req.params;
     const { password, confPassword } = req.body;
 
@@ -235,9 +217,7 @@ const resetPassword = async (req, res) => {
         resetPasswordToken: token,
         resetPasswordExpires: { $gt: Date.now() },
       });
-      // set password in user
-      // resetToken, resetExpiry => reset
-      // save
+      
     } catch (error) {}
   } catch (error) {}
 };
